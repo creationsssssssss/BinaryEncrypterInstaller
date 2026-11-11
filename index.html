@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BinaryObfuscator Installer</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050907;
+  color: #39ff88;
+  font-family: Consolas, monospace;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.installer {
+  width: 420px;
+  max-width: 90%;
+  background: #080d0b;
+  border: 1px solid #39ff88;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 35px #39ff8833;
+  text-align: center;
+}
+
+h1 {
+  font-size: 21px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: #8cae98;
+  font-size: 12px;
+}
+
+.progress-container {
+  background: #142219;
+  height: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 30px 0 12px;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #39ff88;
+  box-shadow: 0 0 12px #39ff88;
+  transition: width 10s linear;
+}
+
+.status {
+  font-size: 12px;
+  margin-top: 15px;
+  min-height: 20px;
+}
+
+.finished {
+  display: none;
+  margin-top: 20px;
+  color: #39ff88;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.small {
+  color: #52735d;
+  font-size: 10px;
+  margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="installer">
+
+  <h1>⬡ BINARY OBFUSCATOR</h1>
+
+  <p class="subtitle">WINDOWS DOWNLOAD</p>
+
+  <div class="progress-container">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div class="status" id="status">
+    Preparing download...
+  </div>
+
+  <div class="finished" id="finished">
+    ✓ Finished!
+  </div>
+
+  <div class="small">
+    BINARY OBFUSCATOR | WINDOWS
+  </div>
+
+</div>
+
+<script>
+window.addEventListener("load", () => {
+
+  const status = document.getElementById("status");
+  const progress = document.getElementById("progress");
+  const finished = document.getElementById("finished");
+
+  // YOUR EXE DOWNLOAD URL
+  const downloadURL =
+    "https://YOUR-USERNAME.github.io/binary-obfuscator/BinaryObfuscator.exe";
+
+  // Start download
+  const link = document.createElement("a");
+  link.href = downloadURL;
+  link.download = "BinaryObfuscator.exe";
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  status.textContent = "Download requested...";
+
+  // Start animation
+  requestAnimationFrame(() => {
+    progress.style.width = "100%";
+  });
+
+  // Finish after 10 seconds
+  setTimeout(() => {
+    status.textContent = "Download request completed.";
+    finished.style.display = "block";
+  }, 10000);
+
+});
+</script>
+
+</body>
+</html>
